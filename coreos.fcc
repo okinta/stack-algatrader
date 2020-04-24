@@ -1,0 +1,20 @@
+variant: fcos
+version: 1.0.0
+systemd:
+  units:
+    - name: algatrader.service
+      enabled: true
+      contents: |
+        [Unit]
+        Description=Algatrader
+        After=network-online.target
+        Wants=network-online.target
+
+        [Service]
+        TimeoutStartSec=0
+        ExecStartPre=-/bin/podman kill algatrader
+        ExecStartPre=-/bin/podman rm algatrader
+        ExecStart=/bin/podman run --name algatrader registry.gitlab.com/okinta/stack-algatrader
+
+        [Install]
+        WantedBy=multi-user.target
