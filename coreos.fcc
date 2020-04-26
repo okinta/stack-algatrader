@@ -12,6 +12,7 @@ systemd:
 
         [Service]
         TimeoutStartSec=0
+        EnvironmentFile=/etc/containers/auth
         ExecStartPre=-/bin/podman kill algatrader
         ExecStartPre=-/bin/podman rm algatrader
         ExecStart=/bin/podman run --name algatrader registry.gitlab.com/okinta/stack-algatrader
