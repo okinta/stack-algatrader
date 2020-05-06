@@ -1,5 +1,9 @@
 variant: fcos
 version: 1.0.0
+passwd:
+  users:
+    - name: algatrader
+
 systemd:
   units:
     - name: algatrader.service
@@ -11,6 +15,7 @@ systemd:
         Wants=network-online.target
 
         [Service]
+        User=algatrader
         TimeoutStartSec=0
         EnvironmentFile=/etc/containers/auth
         ExecStartPre=-/bin/podman kill algatrader
