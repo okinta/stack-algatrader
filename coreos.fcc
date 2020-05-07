@@ -3,6 +3,8 @@ version: 1.0.0
 passwd:
   users:
     - name: algatrader
+      groups:
+        - private-registry
 
 systemd:
   units:
